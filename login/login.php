@@ -20,7 +20,7 @@ if(isset($_POST['submit'])){
          
          if($row['school'] == 'Urdaneta' || 'Asingan' || 'Lingayen' || 'Binmaley'){
             $_SESSION['user_name'] = $row['name'];
-            header('location:dashboard.php');
+            header('location: pages/dashboard.php');
          }
       } else {
          $error[] = 'Incorrect student ID or password!';
