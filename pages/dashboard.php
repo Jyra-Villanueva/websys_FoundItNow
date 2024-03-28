@@ -4,7 +4,7 @@ session_start();
 require("../login/config.php");
 
 if(!isset($_SESSION['user_name'])){
-   header('location:login.php');
+   header('location: ../login/login.php');
 }
 
 ?>

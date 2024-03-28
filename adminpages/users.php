@@ -23,62 +23,7 @@ if (mysqli_num_rows($result) > 0) {
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
     </head>
     <body>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-        }
-
-        .topnav {
-            background-color: #333;
-            overflow: hidden;
-        }
-
-        .topnav a {
-            float: left;
-            color: #f2f2f2;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-            font-size: 17px;
-        }
-
-        .topnav a:hover {
-            background-color: #ddd;
-            color: black;
-        }
-
-        .topnav a.active {
-            background-color: #4CAF50;
-            color: white;
-        }
-
-        .topnav .icon {
-            display: none;
-        }
-
-        @media screen and (max-width: 600px) {
-            .topnav a:not(:first-child) {display: none;}
-            .topnav a.icon {
-                float: right;
-                display: block;
-            }
-        }
-
-        @media screen and (max-width: 600px) {
-            .topnav.responsive {position: relative;}
-            .topnav.responsive .icon {
-                position: absolute;
-                right: 0;
-                top: 0;
-            }
-            .topnav.responsive a {
-                float: none;
-                display: block;
-                text-align: left;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="../css/cssusers.css">
 </head>
 <body>
 
