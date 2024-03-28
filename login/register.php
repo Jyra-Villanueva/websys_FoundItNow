@@ -1,9 +1,6 @@
 <?php
-
 session_start();
-
 require("config.php");
-
 
 if(isset($_POST['submit'])){
 
@@ -12,31 +9,29 @@ if(isset($_POST['submit'])){
    $email = mysqli_real_escape_string($conn, $_POST['email']);
    $pass = md5($_POST['password']);
    $cpass = md5($_POST['cpassword']);
-   $school = $_POST['school'];
+   $campusName = mysqli_real_escape_string($conn, $_POST['campusName']); 
 
-   $select = " SELECT * FROM user WHERE studentid = '$studentid' && password = '$pass' ";
 
+   $select = "SELECT * FROM user WHERE studentid = '$studentid'";
    $result = mysqli_query($conn, $select);
 
    if(mysqli_num_rows($result) > 0){
-
-      $error[] = 'user already exist!';
-
-   }else{
+      $error[] = 'User already exists!';
+   } else {
 
       if($pass != $cpass){
-         $error[] = 'password not matched!';
-      }else{
-         $insert = "INSERT INTO user(studentid, name, email, password, school) VALUES('$studentid','$name','$email','$pass','$school')";
+         $error[] = 'Passwords do not match!';
+      } else {
+
+         $insert = "INSERT INTO user(studentid, name, email, password, campusName) VALUES('$studentid','$name','$email','$pass','$campusName')";
          mysqli_query($conn, $insert);
          header('location:login.php');
+         exit(); 
       }
    }
-
-};
-
-
+}
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -68,8 +63,8 @@ if(isset($_POST['submit'])){
       <input type="email" name="email" required placeholder="enter your email">
       <input type="password" name="password" required placeholder="enter your password">
       <input type="password" name="cpassword" required placeholder="confirm your password">
-      <select name="school">
-         <option value="user">SELECT PSU CAMPUS</option>
+      <select name="campusName">
+         <option value="">SELECT PSU CAMPUS</option>
          <option value="Urdaneta">Urdaneta</option>
          <option value="Asingan">Asingan</option>
          <option value="Lingayen">Lingayen</option>
