@@ -21,8 +21,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     if (mysqli_num_rows($result) == 1) {
-        $_SESSION["studentid"] = $studentid; // Corrected variable name here
-        header("Location: ../userpages/dashboard.php");
+        $_SESSION["studentid"] = $studentid; 
+        header("Location: ../pages/dashboard.php");
         exit();
     } else {
         $error = "Invalid student ID or password. Please try again.";
