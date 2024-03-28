@@ -1,6 +1,9 @@
 <?php
 session_start();
+
 require("config.php");
+
+$error = [];
 
 if(isset($_POST['submit'])){
 
@@ -9,24 +12,23 @@ if(isset($_POST['submit'])){
    $email = mysqli_real_escape_string($conn, $_POST['email']);
    $pass = md5($_POST['password']);
    $cpass = md5($_POST['cpassword']);
-   $campusName = mysqli_real_escape_string($conn, $_POST['campusName']); 
-
+   $school = $_POST['campusID'];
 
    $select = "SELECT * FROM user WHERE studentid = '$studentid'";
+
    $result = mysqli_query($conn, $select);
 
    if(mysqli_num_rows($result) > 0){
       $error[] = 'User already exists!';
    } else {
-
       if($pass != $cpass){
          $error[] = 'Passwords do not match!';
       } else {
-
-         $insert = "INSERT INTO user(studentid, name, email, password, campusName) VALUES('$studentid','$name','$email','$pass','$campusName')";
+         $insert = "INSERT INTO user (studentid, name, email, password, campusID) VALUES ('$studentid', '$name', '$email', '$pass', '$school')";
          mysqli_query($conn, $insert);
-         header('location:login.php');
-         exit(); 
+         $_SESSION['user_name'] = $name;
+         $_SESSION['campusID'] = $school; // Store selected school in session
+         header('location: login.php');
       }
    }
 }

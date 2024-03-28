@@ -17,11 +17,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($studentid === "admin" && $password === "admin123") {
             $_SESSION["is_admin"] = true;
-            header("Location: adminBoard.php");
+            header("Location: ../adminpages/adminBoard.php");
             exit();
         } else {
             $_SESSION["studentid"] = $studentid;
-            header("Location: dashboard.php");
+            header("Location: ../pages/dashboard.php");
             exit();
         }
     } else {
