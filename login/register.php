@@ -24,7 +24,7 @@ if(isset($_POST['submit'])){
       if($pass != $cpass){
          $error[] = 'Passwords do not match!';
       } else {
-         $insert = "INSERT INTO user (studentid, name, email, password, campusID) VALUES ('$studentid', '$name', '$email', '$pass', '$school')";
+         $insert = "INSERT INTO user (studentid, name, email, password, campusName) VALUES ('$studentid', '$name', '$email', '$pass', '$school')";
          mysqli_query($conn, $insert);
          $_SESSION['user_name'] = $name;
          $_SESSION['campusID'] = $school; // Store selected school in session

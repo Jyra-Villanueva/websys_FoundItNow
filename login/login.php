@@ -9,26 +9,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $studentid = mysqli_real_escape_string($conn, $_POST['studentid']);
     $password = mysqli_real_escape_string($conn, $_POST['password']);
 
-    $select = "SELECT * FROM user WHERE studentid = '$studentid' AND password = MD5('$password')";
+    $hashed_password = md5($password);
+
+    $select = "SELECT * FROM user WHERE studentid = '$studentid' AND password = '$hashed_password'";
     $result = mysqli_query($conn, $select);
 
-    if (mysqli_num_rows($result) == 1) {
-        $row = mysqli_fetch_assoc($result);
+    if ($studentid === "admin" && $password === "admin123") {
+        $_SESSION["studentid"] = $studentid;
+        header("Location: ../adminpages/adminBoard.php");
+        exit();
+    }
 
-        if ($studentid === "admin" && $password === "admin123") {
-            $_SESSION["is_admin"] = true;
-            header("Location: ../adminpages/adminBoard.php");
-            exit();
-        } else {
-            $_SESSION["studentid"] = $studentid;
-            header("Location: ../pages/dashboard.php");
-            exit();
-        }
+    if (mysqli_num_rows($result) == 1) {
+        $_SESSION["studentid"] = $studentid; // Corrected variable name here
+        header("Location: ../userpages/dashboard.php");
+        exit();
     } else {
         $error = "Invalid student ID or password. Please try again.";
     }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">

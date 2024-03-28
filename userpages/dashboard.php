@@ -25,11 +25,8 @@ if(!isset($_SESSION['user_name'])){
 <div class="container">
 
    <div class="content">
-      <h3>hi, <span>user</span></h3>
       <h1>welcome <span><?php echo $_SESSION['user_name'] ?></span></h1>
       <p>this is an user page</p>
-      <a href="../login/login.php" class="btn">login</a>
-      <a href="../login/register.php" class="btn">register</a>
       <a href="../login/logout.php" class="btn">logout</a>
    </div>
 
