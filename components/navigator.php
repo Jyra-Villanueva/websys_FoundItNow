@@ -11,15 +11,11 @@
 
    <nav>
        <ul>
-           <li><a href="#">Home</a></li>
-           <li><a href="#">Post Items</a></li>
-           <li><a href="#">Lost Items</a></li>
-           <li><a href="#">Contact Us</a></li>
+           <li><a href="../pages/dashboard.php">Home</a></li>
+           <li><a href="../pages/questionaire.php">Lost Something?</a></li>
            <li><a href="#">Profile</a></li>
        </ul>
    </nav>
-
-   <h1>Welcome to Dashboard</h1>
 
 </body>
 </html>

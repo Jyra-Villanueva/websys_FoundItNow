@@ -1,4 +1,5 @@
 <?php
+require("../components/header.php");
 // Initialize variables
 $selected_campus = "";
 $search_query = "";
@@ -76,11 +77,18 @@ if(isset($_POST['submit'])){
            // Display the table header
            echo "<h2>Lost Items Found:</h2>";
            echo "<table border='1'>";
-           echo "<tr><th>Item Name</th><th>Description</th><th>Location Lost</th><th>Date Found</th><th>Contact Info</th></tr>";
+           echo "<tr><th>Item Name</th><th>Description</th><th>Location Lost</th><th>Date Found</th><th>Contact Info</th><th>Image</th></tr>";
 
            // Output data of each row
            while($row = $result->fetch_assoc()) {
-               echo "<tr><td>" . $row["ItemName"]. "</td><td>" . $row["description"]. "</td><td>" . $row["locationLost"]. "</td><td>" . $row["dateFound"]. "</td><td>" . $row["contactInfo"]. "</td></tr>";
+               echo "<tr>";
+               echo "<td>" . $row["ItemName"]. "</td>";
+               echo "<td>" . $row["description"]. "</td>";
+               echo "<td>" . $row["locationLost"]. "</td>";
+               echo "<td>" . $row["dateFound"]. "</td>";
+               echo "<td>" . $row["contactInfo"]. "</td>";
+               echo "<td><img src='uploads/" . $row["image"]. "' width='100'></td>";
+               echo "</tr>";
            }
 
            // Close the table
@@ -93,6 +101,8 @@ if(isset($_POST['submit'])){
        // Close connection
        $conn->close();
    }
+   require("../components/footer.php");
    ?>
+
 </body>
 </html>
