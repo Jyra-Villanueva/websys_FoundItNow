@@ -10,10 +10,13 @@
 <body>
 
    <nav>
+       <div class="logo">
+           <img src="../images/Found.png" alt="Logo">
+       </div>
        <ul>
            <li><a href="../pages/dashboard.php">Home</a></li>
            <li><a href="../pages/questionaire.php">Lost Something?</a></li>
-           <li><a href="#">Profile</a></li>
+           <li><a href="../login/logout.php">Logout</a></li>
        </ul>
    </nav>
 
