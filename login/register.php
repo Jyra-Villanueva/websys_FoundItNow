@@ -34,24 +34,20 @@ if(isset($_POST['submit'])){
 }
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>register form</title>
-
-   <link rel="stylesheet" href="../css/cssregister.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+  <link rel="stylesheet" href="../css/cssregister.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
 </head>
 <body>
-   
-<div class="form-container">
-
-   <form action="" method="post">
-      <h3>register now</h3>
+  <div class="wrapper">
+    <form action="" method="post">
+      <h1>Register</h1>
       <?php
       if(isset($error)){
          foreach($error as $error){
@@ -59,23 +55,44 @@ if(isset($_POST['submit'])){
          };
       };
       ?>
-      <input type="text" name="studentid" required placeholder="enter your Student ID">
-      <input type="text" name="name" required placeholder="enter your Fullname">
-      <input type="email" name="email" required placeholder="enter your email">
-      <input type="password" name="password" required placeholder="enter your password">
-      <input type="password" name="cpassword" required placeholder="confirm your password">
-      <select name="campusName">
+      <div class="input-box">
+        <input type="text" name="studentid" placeholder="Student ID" required>
+        <i class='bx bxs-user'></i>
+      </div>
+      <div class="input-box">
+        <input type="text" name="name" placeholder="Full Name" required>
+        <i class='bx bxs-user'></i>
+      </div>
+      <div class="input-box">
+        <input type="email" name="email" placeholder="Email" required>
+        <i class='bx bxs-envelope'></i>
+      </div>
+      <div class="input-box">
+        <input type="password" name="password" placeholder="Password" required>
+        <i class='bx bxs-lock-alt'></i>
+      </div>
+      <div class="input-box">
+        <input type="password" name="cpassword" placeholder="Confirm Password" required>
+        <i class='bx bxs-lock-alt'></i>
+      </div>
+      <select name="campusID" required>
          <option value="">SELECT PSU CAMPUS</option>
-         <option value="Urdaneta">Urdaneta</option>
-         <option value="Asingan">Asingan</option>
-         <option value="Lingayen">Lingayen</option>
-         <option value="Binmaley">Binmaley</option>
+                <option value="CAMP1001">Urdaneta Campus</option>
+                <option value="CAMP1002">Asingan Campus</option>
+                <option value="CAMP1003">Binmaley Campus</option>
+                <option value="CAMP1004">Alaminos Campus</option>
+                <option value="CAMP1005">Bayambang Campus</option>
+                <option value="CAMP1006">Infanta Campus</option>
+                <option value="CAMP1007">San Carlos Campus</option>
+                <option value="CAMP1008">Sta. Maria Campus</option>
+                <option value="CAMP1009">Lingayen Campus</option>
       </select>
-      <input type="submit" name="submit" value="register now" class="form-btn">
-      <p>already have an account? <a href="login.php">login now</a></p>
-   </form>
-
-</div>
-
+      <br>
+      <button type="submit" name="submit" class="btn">Register</button>
+      <div class="register-link">
+        <p>Already have an account? <a href="login.php">Login</a></p>
+      </div>
+    </form>
+  </div>
 </body>
 </html>

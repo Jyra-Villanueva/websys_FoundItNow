@@ -19,8 +19,15 @@ require("../components/header.php");
         <label for="campusID">Campus:</label>
             <select id="campusID" name="campusID" required>
                 <option value="">Select Campus</option>
-                <option value="CAMP1001">Urdaneta</option>
-                <option value="CAMP1002">Asingan</option>
+                <option value="CAMP1001">Urdaneta Campus</option>
+                <option value="CAMP1002">Asingan Campus</option>
+                <option value="CAMP1003">Binmaley Campus</option>
+                <option value="CAMP1004">Alaminos Campus</option>
+                <option value="CAMP1005">Bayambang Campus</option>
+                <option value="CAMP1006">Infanta Campus</option>
+                <option value="CAMP1007">San Carlos Campus</option>
+                <option value="CAMP1008">Sta. Maria Campus</option>
+                <option value="CAMP1009">Lingayen Campus</option>
             </select><br><br>
 
         <label for="description">Description:</label><br>
