@@ -2,13 +2,11 @@
 // Include the database configuration file
 require("../login/config.php");
 
-// Get the search term from the request
-$searchTerm = $_GET['term'];
+// Get the selected campus value from the request
+$selectedCampus = $_GET['campus'];
 
-// SQL query to search for users based on the search term
-$query = "SELECT * FROM user WHERE studentid LIKE '%$searchTerm%' OR name LIKE '%$searchTerm%' OR email LIKE '%$searchTerm%'";
-
-// Perform the query
+// SQL query to filter users by selected campus
+$query = "SELECT * FROM user WHERE campusID = '$selectedCampus'";
 $result = mysqli_query($conn, $query);
 
 // Check if there are any results
@@ -28,8 +26,8 @@ if ($result && mysqli_num_rows($result) > 0) {
         echo "</tr>";
     }
 } else {
-    // No users found
-    echo "<tr><td colspan='6'>No users found</td></tr>";
+    // No users found for the selected campus
+    echo "<tr><td colspan='6'>No users found for the selected campus</td></tr>";
 }
 
 // Close the database connection

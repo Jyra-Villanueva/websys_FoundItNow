@@ -2,6 +2,7 @@
 <?php
 session_start();
 require_once("../login/config.php");
+require('../components/superadminnavi.php');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $adminID = $_POST['adminID'] ?? '';

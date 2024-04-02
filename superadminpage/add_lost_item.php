@@ -10,7 +10,7 @@
 
 <body>
 
-<?php require("../components/adminnavi.php");?>
+<?php require('../components/superadminnavi.php');?>
 
 <script>
     function myFunction() {

@@ -1,7 +1,7 @@
 <?php
 // Include the database configuration file
 require("../login/config.php");
-require("../components/adminnavi.php");
+
 // Fetch all lost items from the database with associated campus names
 $query = "SELECT lostitems.*, campus.campusName 
           FROM lostitems 
@@ -11,32 +11,22 @@ $result = mysqli_query($conn, $query);
 // Check if there are any lost items
 if (mysqli_num_rows($result) > 0) {
     ?>
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Lost Items</title>
-        <style>
-            .card {
-                border: 1px solid #ccc;
-                border-radius: 5px;
-                padding: 10px;
-                margin-bottom: 10px;
-                background-color: #f9f9f9;
-            }
-            .card img {
-                max-width: 100%;
-                height: auto;
-            }
-
-            body {
+   <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lost Items</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
             margin: 0;
             padding: 0;
         }
 
         .topnav {
-            background-color: #333;
+            background-color: #007bff;
             overflow: hidden;
         }
 
@@ -46,7 +36,7 @@ if (mysqli_num_rows($result) > 0) {
             text-align: center;
             padding: 14px 16px;
             text-decoration: none;
-            font-size: 17px;
+            font-size: 20px;
         }
 
         .topnav a:hover {
@@ -84,25 +74,21 @@ if (mysqli_num_rows($result) > 0) {
                 text-align: left;
             }
         }
-        </style>
-    </head>
+    </style>
+</head>
 
-<script>
-    function myFunction() {
-        var x = document.getElementById("myTopnav");
-        if (x.className === "topnav") {
-            x.className += " responsive";
-        } else {
-            x.className = "topnav";
-        }
-    }
-</script>
-        <h2>Lost Items</h2>
+<body>
 
-        <!-- Filter Dropdown -->
-        <div>
+<?php require("../components/adminnavi.php");?>
+
+<h2 class="text-center my-4">Lost Items</h2>
+
+<!-- Filter Dropdown -->
+<div class="container mb-4">
+    <div class="row justify-content-center">
+        <div class="col-md-4">
             <label for="campusFilter">Filter by Campus:</label>
-            <select id="campusFilter">
+            <select id="campusFilter" class="form-control">
                 <option value="">All Campuses</option>
                 <?php
                 // Fetch distinct campus names and populate the dropdown
@@ -114,35 +100,48 @@ if (mysqli_num_rows($result) > 0) {
                 ?>
             </select>
         </div>
+    </div>
+</div>
 
-        <!-- Display Lost Items -->
-        <div class="container">
-            <?php
-            // Loop through each row and display lost item data
-            while ($row = mysqli_fetch_assoc($result)) {
-                ?>
-                <div class="card">
-                    <h3><?php echo htmlspecialchars($row['ItemName']); ?></h3>
-                    <p><strong>Campus:</strong> <?php echo htmlspecialchars($row['campusName']); ?></p> <!-- Display Campus Name -->
-                    <p><strong>Description:</strong> <?php echo htmlspecialchars($row['description']); ?></p>
-                    <p><strong>Location Lost:</strong> <?php echo htmlspecialchars($row['locationLost']); ?></p>
-                    <p><strong>Date Found:</strong> <?php echo htmlspecialchars($row['dateFound']); ?></p>
-                    <p><strong>Contact Info:</strong> <?php echo htmlspecialchars($row['contactInfo']); ?></p>
-                    <?php 
-                        $imagePath = '../uploads/' . $row['image']; // Adjusted path
-                        if (!empty($row['image']) && file_exists($imagePath)) {
-                            echo '<p><strong>Image:</strong><br><img src="' . htmlspecialchars($imagePath) . '" alt="Item Image"></p>';
-                        } else {
-                            echo '<p><strong>No Image Available</strong></p>';
-                        }
-                    ?>
-                </div>
-                <?php
-            }
+<!-- Display Lost Items -->
+<div class="container">
+    <div class="row">
+        <?php
+        // Loop through each row and display lost item data
+        while ($row = mysqli_fetch_assoc($result)) {
             ?>
-        </div>
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <?php 
+                    $imagePath = '../uploads/' . $row['image']; // Adjusted path
+                    if (!empty($row['image']) && file_exists($imagePath)) {
+                        echo '<img class="card-img-top" src="' . htmlspecialchars($imagePath) . '" alt="Item Image">';
+                    } else {
+                        echo '<div class="card-img-top">No Image Available</div>';
+                    }
+                    ?>
+                    <div class="card-body">
+                        <h5 class="card-title"><?php echo htmlspecialchars($row['ItemName']); ?></h5>
+                        <p class="card-text"><strong>Campus:</strong> <?php echo htmlspecialchars($row['campusName']); ?></p>
+                        <p class="card-text"><strong>Description:</strong> <?php echo htmlspecialchars($row['description']); ?></p>
+                        <p class="card-text"><strong>Location Lost:</strong> <?php echo htmlspecialchars($row['locationLost']); ?></p>
+                        <p class="card-text"><strong>Date Found:</strong> <?php echo htmlspecialchars($row['dateFound']); ?></p>
+                        <p class="card-text"><strong>Contact Info:</strong> <?php echo htmlspecialchars($row['contactInfo']); ?></p>
+                    </div>
+                </div>
+            </div>
+            <?php
+        }
+        ?>
+    </div>
+</div>
 
-        <script>
+<!-- Bootstrap JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
     // JavaScript to handle campus filtering
     document.getElementById('campusFilter').addEventListener('change', function() {
         var campusID = this.value;
@@ -156,8 +155,10 @@ if (mysqli_num_rows($result) > 0) {
         xhttp.send();
     });
 </script>
-    </body>
-    </html>
+
+</body>
+</html>
+
     <?php
 } else {
     // No lost items found

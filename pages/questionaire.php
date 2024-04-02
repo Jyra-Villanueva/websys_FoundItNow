@@ -11,7 +11,7 @@ require("../components/header.php");
     <link rel="stylesheet" href="../css/cssquestionaire.css">
 </head>
 <body>
-    <h1>Lost and Found Questionnaire</h1>
+    <h1>Lost and Found Submission</h1>
     <form id="lostFoundForm" action="../form/submit_form.php" method="post" enctype="multipart/form-data">
         <label for="itemName">Item Name:</label>
         <input type="text" id="itemName" name="itemName" required><br><br>

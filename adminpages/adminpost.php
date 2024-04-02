@@ -2,6 +2,7 @@
 session_start();
 require("../login/config.php");
 require("../components/adminnavi.php");
+
 // Check if admin is logged in
 if (!isset($_SESSION['id'])) {
     header("Location: ../login/login.php");
@@ -69,11 +70,7 @@ if (!$result) {
             padding: 0;
         }
 
-        .topnav {
-            background-color: #333;
-            overflow: hidden;
-        }
-
+        
         .topnav a {
             float: left;
             color: #f2f2f2;
@@ -153,13 +150,23 @@ if (!$result) {
                         <td><?php echo htmlspecialchars($row['locationLost']); ?></td>
                         <td><?php echo htmlspecialchars($row['dateFound']); ?></td>
                         <td><?php echo htmlspecialchars($row['contactInfo']); ?></td>
-                        <td><img src="<?php echo $row['image']; ?>" alt="Item Image" style="max-width: 100px;"></td>
+                        <td>
+    <?php 
+    $imagePath = '../uploads/' . $row['image'];
+    if (!empty($row['image']) && file_exists($imagePath)) {
+        echo '<img src="' . htmlspecialchars($imagePath) . '" alt="Item Image" style="max-width: 100px;">';
+    } else {
+        echo 'No Image Available';
+    }
+    ?>
+</td>
+                      
                         <td><?php echo $row['claimed'] == 1 ? 'Yes' : 'No'; ?></td>
                     </tr>
                 <?php endwhile; ?>
             </tbody>
         </table>
-        <a href="../login/logout.php" class="btn btn-danger">Logout</a>
+     
     </div>
 </body>
 </html>

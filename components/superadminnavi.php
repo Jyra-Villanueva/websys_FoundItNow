@@ -26,7 +26,7 @@
         .topnav a {
             color: #f2f2f2;
             text-decoration: none;
-            font-size: 17px;
+            font-size: 20px;
             padding: 14px 16px;
             text-align: center;
         }
@@ -74,16 +74,17 @@
     <div class="logo">
         <img src="../images/Found.png" alt="Logo">
     </div>
-    <a href="adminBoard.php" <?php if(basename($_SERVER['PHP_SELF']) == 'adminBoard.php') echo 'class="active"'; ?>><i class="fa fa-fw fa-home"></i>Home</a>
-    <a href="adminpost.php" <?php if(basename($_SERVER['PHP_SELF']) == 'adminpost.php') echo 'class="active"'; ?>><i class="fas fa-fw fa-user"></i>Lost & Found</a>
-    <a href="add_lost_item.php" <?php if(basename($_SERVER['PHP_SELF']) == 'add_lost_item.php') echo 'class="active"'; ?>><i class="fa-solid fa-utensils"></i>Add Post</a>
-    <a href="manageitems.php" <?php if(basename($_SERVER['PHP_SELF']) == 'manageitems.php') echo 'class="active"'; ?>><i class="fa-solid fa-utensils"></i>Manage</a>
-    <a href="usersAdmin.php" <?php if(basename($_SERVER['PHP_SELF']) == 'usersAdmin.php') echo 'class="active"'; ?>><i class="fa-solid fa-utensils"></i>Users</a>
+    <a href="../superadminpage/superadminBoard.php" <?php if(basename($_SERVER['PHP_SELF']) == 'adminBoard.php') echo 'class="active"'; ?>><i class="fa fa-fw fa-home"></i>Home</a>
+    <a href="../superadminpage/add_lost_item.php" <?php if(basename($_SERVER['PHP_SELF']) == 'add_lost_item.php') echo 'class="active"'; ?>><i class="fa-solid fa-utensils"></i>Add Post</a>
+    <a href="../superadminpage/manageitems.php" <?php if(basename($_SERVER['PHP_SELF']) == 'manageitems.php') echo 'class="active"'; ?>><i class="fa-solid fa-utensils"></i>Manage</a>
+    <a href="../superadminpage/usersAdmin.php" <?php if(basename($_SERVER['PHP_SELF']) == 'usersAdmin.php') echo 'class="active"'; ?>><i class="fa-solid fa-utensils"></i>Users</a>
+    <a href="../superadminpage/admin_list.php"><i class="fa-solid fa-utensils"></i>Admin</a>
     <a href="../login/logout.php"><i class="fas fa-fw fa-sign-out"></i>Logout</a>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
         <i class="fa fa-bars"></i>
     </a>
 </div>
+
 
 
 <script>

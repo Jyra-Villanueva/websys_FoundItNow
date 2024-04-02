@@ -1,7 +1,7 @@
 <?php
 // Include the database configuration file
 require("../login/config.php");
-require("../components/adminnavi.php");
+require('../components/superadminnavi.php');
 
 // Fetch all users from the database
 $query = "SELECT * FROM user";
