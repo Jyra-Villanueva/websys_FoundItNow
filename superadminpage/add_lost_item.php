@@ -34,9 +34,15 @@
         <div class="form-group">
             <label for="campusID">Campus:</label>
             <select class="form-control" id="campusID" name="campusID">
-                <option value="CAMP1001">Urdaneta</option>
-                <option value="CAMP1002">Asingan</option>
-                <!-- Add more options as needed -->
+                <option value="CAMP1001">Urdaneta Campus</option>
+                <option value="CAMP1002">Asingan Campus</option>
+                <option value="CAMP1003">Binmaley Campus</option>
+                <option value="CAMP1004">Alaminos Campus</option>
+                <option value="CAMP1005">Bayambang Campus</option>
+                <option value="CAMP1006">Infanta Campus</option>
+                <option value="CAMP1007">San Carlos Campus</option>
+                <option value="CAMP1008">Sta. Maria Campus</option>
+                <option value="CAMP1009">Lingayen Campus</option>
             </select>
         </div>
         
@@ -69,7 +75,7 @@
     </form>
 </div>
 
-<!-- Bootstrap JS -->
+
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

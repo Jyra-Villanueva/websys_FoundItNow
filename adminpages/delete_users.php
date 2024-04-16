@@ -3,12 +3,12 @@
 require("../login/config.php");
 require("../components/adminnavi.php");
 // Check if student ID is provided via POST
-if(isset($_POST['id'])) {
+if(isset($_POST['ID'])) {
     // Sanitize input
-    $id = mysqli_real_escape_string($conn, $_POST['id']);
+    $id = mysqli_real_escape_string($conn, $_POST['ID']);
 
     // Delete user from the database
-    $query = "DELETE FROM user WHERE studentid = '$id'";
+    $query = "DELETE FROM user WHERE ID = '$id'";
     $result = mysqli_query($conn, $query);
 
     // Check if deletion was successful

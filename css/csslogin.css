@@ -96,3 +96,6 @@ body{
 .register-link p a:hover{
     text-decoration: underline;
 }
+h1{
+    color:#fff;
+}

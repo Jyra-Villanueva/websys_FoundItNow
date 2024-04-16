@@ -1,7 +1,6 @@
 <?php
 // Include the database configuration file
 require("../login/config.php");
-require('../components/superadminnavi.php');
 // Check if campusID is set and not empty
 if (isset($_GET['campusID']) && !empty($_GET['campusID'])) {
     // If a specific campus is selected, filter by campusID

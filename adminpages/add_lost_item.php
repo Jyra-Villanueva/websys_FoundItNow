@@ -36,7 +36,6 @@
             <select class="form-control" id="campusID" name="campusID">
                 <option value="CAMP1001">Urdaneta</option>
                 <option value="CAMP1002">Asingan</option>
-                <!-- Add more options as needed -->
             </select>
         </div>
         

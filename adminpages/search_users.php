@@ -14,6 +14,19 @@ $result = mysqli_query($conn, $query);
 // Check if there are any results
 if ($result && mysqli_num_rows($result) > 0) {
     // Output the results in HTML format
+    echo "<div class='table-responsive'>";
+    echo "<table class='table table-striped'>";
+    echo "<thead class='thead-dark'>";
+    echo "<tr>";
+    echo "<th>ID</th>";
+    echo "<th>Student ID</th>";
+    echo "<th>Name</th>";
+    echo "<th>Email</th>";
+    echo "<th>Campus ID</th>";
+    echo "<th>Actions</th>";
+    echo "</tr>";
+    echo "</thead>";
+    echo "<tbody>";
     while ($row = mysqli_fetch_assoc($result)) {
         echo "<tr>";
         echo "<td>" . htmlspecialchars($row['ID']) . "</td>";
@@ -27,9 +40,12 @@ if ($result && mysqli_num_rows($result) > 0) {
               </td>";
         echo "</tr>";
     }
+    echo "</tbody>";
+    echo "</table>";
+    echo "</div>";
 } else {
     // No users found
-    echo "<tr><td colspan='6'>No users found</td></tr>";
+    echo "<div class='alert alert-warning' role='alert'>No users found</div>";
 }
 
 // Close the database connection

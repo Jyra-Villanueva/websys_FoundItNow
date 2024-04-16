@@ -11,6 +11,7 @@
           margin: 0;
           padding: 0;
           font-family: Arial, sans-serif; /* Adding a font family */
+          align-items: center; 
       }
 
       nav {
@@ -21,9 +22,10 @@
           align-items: center; 
       }
 
-      .logo img {
+      img {
           height: 40px;
           width: auto; 
+          
       }
 
       nav ul {
@@ -54,17 +56,14 @@
    </style>
 </head>
 <body>
-
-   <nav>
-       <div class="logo">
-           <img src="../images/Found.png" alt="Logo">
-       </div>
-       <ul>
-           <li><a href="../pages/dashboard.php">Home</a></li>
-           <li><a href="../pages/questionaire.php">Lost Something?</a></li>
-           <li><a href="../login/logout.php">Logout</a></li>
-       </ul>
-   </nav>
+    <nav>
+        <ul>
+        <img src="../images/Found.png" alt="Logo">
+            <li><a href="../pages/dashboard.php">Home</a></li>
+            <li><a href="../pages/questionaire.php">Lost Something?</a></li>
+            <li><a href="../login/logout.php">Logout</a></li>
+        </ul>
+    </nav>
 
 </body>
 </html>

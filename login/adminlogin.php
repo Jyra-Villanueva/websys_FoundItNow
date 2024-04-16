@@ -43,6 +43,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <link rel="stylesheet" href="../css/csslogin.css">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
+<style>
+h1{
+    color:#fff;
+}
+p{
+  color:#fff;
+}
+</style>
 <body>
   <div class="wrapper">
     <form action="" method="post">
@@ -62,8 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       </div>
       <button type="submit" name="submit" value="Login Now" class="btn">Login</button>
       <div class="register-link">
-        <p>Don't have an account? <a href="register.php">Register</a></p>
-        <p>Login as Admin <a href="login.php">User Login</a></p>
+        <p>Login as User: <a href="login.php">User Login</a></p>
       </div>
     </form>
   </div>

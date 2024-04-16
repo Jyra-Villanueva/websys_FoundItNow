@@ -9,17 +9,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $studentid = mysqli_real_escape_string($conn, $_POST['studentid']);
     $password = mysqli_real_escape_string($conn, $_POST['password']);
 
-    $hashed_password = md5($password);
-
-    $select = "SELECT * FROM user WHERE studentid = '$studentid' AND password = '$hashed_password'";
-    $result = mysqli_query($conn, $select);
-
-    if (mysqli_num_rows($result) == 1) {
-        $_SESSION["studentid"] = $studentid; 
-        header("Location: ../pages/dashboard.php");
-        exit();
+    // Check if the password meets the minimum length requirement
+    if(strlen($password) < 8) {
+        $error = "Password must be at least 8 characters long.";
     } else {
-        $error = "Invalid student ID or password. Please try again.";
+        $hashed_password = md5($password);
+
+        $select = "SELECT * FROM user WHERE studentid = '$studentid' AND password = '$hashed_password'";
+        $result = mysqli_query($conn, $select);
+
+        if ($studentid === "admin" && $password === "admin123") {
+          $_SESSION["studentid"] = $studentid;
+          header("Location: ../adminpages/adminBoard.php");
+          exit();
+      }
+  
+        if (mysqli_num_rows($result) == 1) {
+            $_SESSION["studentid"] = $studentid; 
+            header("Location: ../pages/dashboard.php");
+            exit();
+        } else {
+            $error = "Invalid student ID or password. Please try again.";
+        }
     }
 }
 ?>
@@ -34,6 +45,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <link rel="stylesheet" href="../css/csslogin.css">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
+<style>
+h1{
+    color:#fff;
+}
+p{
+  color:#fff;
+}
+</style>
 <body>
   <div class="wrapper">
     <form action="" method="post">
@@ -54,10 +73,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       <button type="submit" name="submit" class="btn">Login</button>
       <div class="register-link">
         <p>Don't have an account? <a href="register.php">Register</a></p>
-        <p>Login as Admin <a href="adminlogin.php">Admin Login</a></p>
+        <p>Login as Admin: <a href="adminlogin.php">Admin Login</a></p>
       </div>
     </form>
   </div>
 </body>
 </html>
-

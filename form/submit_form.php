@@ -29,7 +29,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $sql = "INSERT INTO lostitems (ItemName, campusID, description, locationLost, dateFound, contactInfo, image) 
                         VALUES ('$itemName', '$campusID', '$description', '$locationLost', '$dateFound', '$contactInfo', '$fileName')";
                 if(mysqli_query($conn, $sql)){
-                    echo "Form submitted successfully.";
+                    header("Location: ../pages/dashboard.php");
+                    exit(); // Ensure that no other output is sent to the browser
                 } else{
                     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
                 }
@@ -44,8 +45,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sql = "INSERT INTO lostitems (ItemName, campusID, description, locationLost, dateFound, contactInfo) 
                 VALUES ('$itemName', '$campusID', '$description', '$locationLost', '$dateFound', '$contactInfo')";
 if(mysqli_query($conn, $sql)){
-    echo "Form submitted successfully.";
-    // Redirect to dashboard page
     header("Location: ../pages/dashboard.php");
     exit(); // Ensure that no other output is sent to the browser
 } else{

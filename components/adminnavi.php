@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         body {
             margin: 0;
@@ -66,6 +66,16 @@
                 text-align: left;
             }
         }
+        .navigator {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+.date {
+    color: white; /* Set date text color to white */
+}
+
     </style>
 </head>
 <body>
@@ -74,15 +84,18 @@
     <div class="logo">
         <img src="../images/Found.png" alt="Logo">
     </div>
-    <a href="adminBoard.php" <?php if(basename($_SERVER['PHP_SELF']) == 'adminBoard.php') echo 'class="active"'; ?>><i class="fa fa-fw fa-home"></i>Home</a>
-    <a href="adminpost.php" <?php if(basename($_SERVER['PHP_SELF']) == 'adminpost.php') echo 'class="active"'; ?>><i class="fas fa-fw fa-user"></i>Lost & Found</a>
-    <a href="add_lost_item.php" <?php if(basename($_SERVER['PHP_SELF']) == 'add_lost_item.php') echo 'class="active"'; ?>><i class="fa-solid fa-utensils"></i>Add Post</a>
-    <a href="manageitems.php" <?php if(basename($_SERVER['PHP_SELF']) == 'manageitems.php') echo 'class="active"'; ?>><i class="fa-solid fa-utensils"></i>Manage</a>
-    <a href="usersAdmin.php" <?php if(basename($_SERVER['PHP_SELF']) == 'usersAdmin.php') echo 'class="active"'; ?>><i class="fa-solid fa-utensils"></i>Users</a>
-    <a href="../login/logout.php"><i class="fas fa-fw fa-sign-out"></i>Logout</a>
+    <a href="../adminpages/adminBoard.php" <?php if(basename($_SERVER['PHP_SELF']) == 'adminBoard.php') echo 'class="active"'; ?>>Home</a>
+    <a href="../adminpages/adminpost.php" <?php if(basename($_SERVER['PHP_SELF']) == 'adminpost.php') echo 'class="active"'; ?>>Lost & Found</a>
+    <a href="../adminpages/add_lost_item.php" <?php if(basename($_SERVER['PHP_SELF']) == 'add_lost_item.php') echo 'class="active"'; ?>>Add Post</a>
+    <a href="../adminpages/manageitems.php" <?php if(basename($_SERVER['PHP_SELF']) == 'manageitems.php') echo 'class="active"'; ?>>Manage</a>
+    <a href="../adminpages/usersAdmin.php" <?php if(basename($_SERVER['PHP_SELF']) == 'usersAdmin.php') echo 'class="active"'; ?>>Users</a>
+    <a href="../login/logout.php">Logout</a>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
         <i class="fa fa-bars"></i>
     </a>
+    <div class="date">
+        <?php echo date('F j, Y'); ?>
+    </div>
 </div>
 
 

@@ -3,11 +3,17 @@ body {
     background-color: #f4f4f4;
     margin: 0;
     padding: 0;
+    background-image: url('../images/bg2.png'); /* Replace 'path/to/your/image.jpg' with the path to your image */
+    background-size: cover; /* Cover ensures the background image covers the entire body */
+    background-repeat: no-repeat; /* No repeat ensures the image is not repeated */
+
 }
 
 h1 {
     text-align: center;
-    color: #333;
+    color: #fff;
+    margin: 10;
+    padding: 20px;
 }
 
 form {

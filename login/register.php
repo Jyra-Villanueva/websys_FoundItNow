@@ -3,32 +3,39 @@ session_start();
 
 require("config.php");
 
-$error = [];
+$errors = [];
 
 if(isset($_POST['submit'])){
 
    $studentid = mysqli_real_escape_string($conn, $_POST['studentid']);
    $name = mysqli_real_escape_string($conn, $_POST['name']);
    $email = mysqli_real_escape_string($conn, $_POST['email']);
-   $pass = md5($_POST['password']);
-   $cpass = md5($_POST['cpassword']);
+   $pass = $_POST['password'];
+   $cpass = $_POST['cpassword'];
    $school = $_POST['campusID'];
+
+   // Check if password meets the minimum length requirement
+   if(strlen($pass) < 8){
+      $errors[] = 'Password must be at least 8 characters long.';
+   }
 
    $select = "SELECT * FROM user WHERE studentid = '$studentid'";
 
    $result = mysqli_query($conn, $select);
 
    if(mysqli_num_rows($result) > 0){
-      $error[] = 'User already exists!';
+      $errors[] = 'User already exists!';
    } else {
       if($pass != $cpass){
-         $error[] = 'Passwords do not match!';
+         $errors[] = 'Passwords do not match!';
       } else {
-         $insert = "INSERT INTO user (studentid, name, email, password, campusID) VALUES ('$studentid', '$name', '$email', '$pass', '$school')";
+         $hashed_password = md5($pass);
+         $insert = "INSERT INTO user (studentid, name, email, password, campusID) VALUES ('$studentid', '$name', '$email', '$hashed_password', '$school')";
          mysqli_query($conn, $insert);
          $_SESSION['user_name'] = $name;
          $_SESSION['campusID'] = $school; // Store selected school in session
          header('location: login.php');
+         exit();
       }
    }
 }
@@ -49,8 +56,8 @@ if(isset($_POST['submit'])){
     <form action="" method="post">
       <h1>Register</h1>
       <?php
-      if(isset($error)){
-         foreach($error as $error){
+      if(!empty($errors)){
+         foreach($errors as $error){
             echo '<span class="error-msg">'.$error.'</span>';
          };
       };
